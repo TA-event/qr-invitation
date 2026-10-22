@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#142b23">
+<title>AR Wedding Invitation | Aýna & Merdan</title>
+<style>
+:root{--green:#142b23;--green2:#244538;--gold:#d7b568;--gold-light:#f3dfa0;--ivory:#faf4e9;--muted:#d6c9ae}
+*{box-sizing:border-box}body{margin:0;background:#0e1915;color:var(--ivory);font-family:Georgia,"Times New Roman",serif}
+main{min-height:100svh;display:grid;place-items:center;padding:16px}
+.card{position:relative;isolation:isolate;width:min(100%,440px);min-height:780px;overflow:hidden;border:1px solid #b99752;background:radial-gradient(ellipse at 50% 34%,#315444 0,#1c392e 40%,#11251d 78%);box-shadow:0 22px 70px #0008;text-align:center;padding:32px 22px 25px}
+.card:before{content:"";position:absolute;inset:10px;border:1px solid #d7b56855;pointer-events:none;z-index:-1}
+.topline{font:10px Arial,sans-serif;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold-light)}
+.ornament{color:var(--gold);font-size:23px;letter-spacing:7px;margin:19px 0 12px}
+.kicker{font:10px Arial,sans-serif;letter-spacing:2.2px;text-transform:uppercase;color:var(--muted)}
+h1{font-weight:normal;font-size:clamp(40px,10vw,52px);line-height:1.04;margin:14px 0 10px;color:#fff8e9}
+.amp{color:var(--gold-light);font-style:italic}
+.rule{width:90px;height:1px;margin:19px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.message{font-size:16px;line-height:1.65;max-width:310px;margin:0 auto;color:#f0e5d0}
+.ring-preview{height:205px;display:grid;place-items:center;position:relative;perspective:800px;margin:0 auto}
+.orbit{position:absolute;width:165px;height:165px;border:1px solid #d7b56870;border-radius:50%;transform:rotateX(67deg) rotateZ(-20deg);animation:orbit 13s linear infinite}
+.orbit.o2{width:132px;height:132px;transform:rotateX(64deg) rotateZ(40deg);animation-direction:reverse;border-color:#f3dfa06a}
+.rings{width:140px;height:130px;position:relative;transform-style:preserve-3d;animation:float 4s ease-in-out infinite}
+.ring{position:absolute;width:84px;height:84px;border:8px solid transparent;border-radius:50%;background:linear-gradient(#1c392e,#1c392e) padding-box,linear-gradient(135deg,#fff4ba,#a67924 27%,#f9e9a1 48%,#956b1d 73%,#fff0aa) border-box;box-shadow:inset 0 0 7px #fff4,0 0 17px #e4c36b30}
+.ring.one{left:12px;top:22px;transform:rotateY(62deg) rotateX(15deg)}
+.ring.two{left:46px;top:22px;transform:rotateY(-62deg) rotateX(-15deg)}
+.gem{position:absolute;left:65px;top:10px;width:14px;height:14px;transform:rotate(45deg);background:linear-gradient(135deg,#fff9da,#d3ad50);box-shadow:0 0 15px #f7df8b}
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffe9a1;box-shadow:0 0 9px 3px #e9c76a88;animation:twinkle 2.4s ease-in-out infinite}
+.p1{top:25%;left:18%;animation-delay:-.4s}.p2{top:18%;left:73%;animation-delay:-1.2s}.p3{top:70%;left:15%;animation-delay:-.8s}.p4{top:78%;left:78%;animation-delay:-1.8s}.p5{top:48%;left:8%;animation-delay:-.2s}.p6{top:44%;left:91%;animation-delay:-1.5s}.p7{top:12%;left:48%;animation-delay:-.9s}.p8{top:88%;left:50%;animation-delay:-2s}
+.flower{position:absolute;font-size:24px;color:var(--gold-light);text-shadow:0 0 13px #d7b56855;animation:float 5s ease-in-out infinite}
+.f1{top:15px;left:23px}.f2{top:27px;right:20px;animation-delay:-2s}.f3{bottom:15px;left:33px;animation-delay:-1s}.f4{bottom:17px;right:29px;animation-delay:-3s}
+.date{font-size:21px;letter-spacing:2px;color:var(--gold-light);margin:3px 0 8px}
+.details{font:12px/1.85 Arial,sans-serif;letter-spacing:.7px;color:#dfd3bd}
+.actions{display:grid;gap:10px;margin-top:19px}
+button{cursor:pointer;font:11px Arial,sans-serif;letter-spacing:1.2px;text-transform:uppercase;padding:14px 12px;border:1px solid var(--gold)}
+.primary{background:linear-gradient(135deg,#f3dfa0,#b18a3c);color:#1a3025}
+.secondary{background:#142b23aa;color:#f9efd8}
+.note{font:10px/1.6 Arial,sans-serif;color:#c1b59e;margin-top:15px}
+#status{font:11px/1.5 Arial,sans-serif;color:#f3dfa0;min-height:18px;margin-top:8px}
+#arPanel{display:none;position:fixed;inset:0;background:#09110e;z-index:10}
+#arPanel.open{display:block}
+#arPanel model-viewer{width:100%;height:100%;background:radial-gradient(ellipse,#244538,#09110e)}
+.close-ar{position:absolute;z-index:3;top:calc(env(safe-area-inset-top) + 12px);right:12px;background:#132920eF;color:#fff0ce;border:1px solid #d7b568;padding:12px}
+.ar-help{position:absolute;z-index:3;left:14px;right:14px;bottom:calc(env(safe-area-inset-bottom) + 14px);padding:12px;background:#132920eF;border:1px solid #d7b56877;color:#fff0ce;font:12px/1.5 Arial,sans-serif;text-align:center}
+@keyframes float{0%,100%{translate:0 0;rotate:-3deg}50%{translate:0 -8px;rotate:3deg}}
+@keyframes orbit{to{transform:rotateX(67deg) rotateZ(340deg)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.65)}50%{opacity:1;transform:scale(1.5)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+<main>
+<section class="card">
+  <div class="topline">Digital invitation · Türkmenistan</div>
+  <div class="ornament">✧ ❦ ✧</div>
+  <div class="kicker">Свадебное приглашение</div>
+  <h1>Aýna <span class="amp">&</span><br>Merdan</h1>
+  <div class="rule"></div>
+  <p class="message">С радостью приглашаем вас разделить с нами начало новой истории.</p>
+  <div class="ring-preview" aria-label="Декоративная анимация колец с золотым свечением и частицами">
+    <span class="particle p1"></span><span class="particle p2"></span><span class="particle p3"></span><span class="particle p4"></span><span class="particle p5"></span><span class="particle p6"></span><span class="particle p7"></span><span class="particle p8"></span>
+    <span class="flower f1">✿</span><span class="flower f2">❀</span><span class="flower f3">✧</span><span class="flower f4">✿</span>
+    <div class="orbit"></div><div class="orbit o2"></div>
+    <div class="rings"><div class="ring one"></div><div class="ring two"></div><div class="gem"></div></div>
+  </div>
+  <div class="date">15 · 08 · 2027</div>
+  <div class="details">ВОСКРЕСЕНЬЕ · 18:00<br>Торжественный зал «Mysal»<br>Ашхабад, Туркменистан</div>
+  <div class="rule"></div>
+  <div class="actions">
+    <button class="primary" onclick="launchAR()">Открыть в дополненной реальности</button>
+    <button class="secondary" onclick="openFallback()">Посмотреть 3D-анимацию</button>
+  </div>
+  <div id="status" role="status"></div>
+  <div class="note">Демо-пример. Имена, дата и место условные.<br>AR требует совместимого телефона и HTTPS-ссылки.</div>
+</section>
+</main>
+<div id="arPanel" aria-hidden="true">
+  <button class="close-ar" onclick="closeAR()">Закрыть ✕</button>
+  <model-viewer id="viewer" src="./assets/gold-rings.glb"
+    alt="Стилизованная 3D-модель золотых свадебных колец"
+    ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate
+    shadow-intensity="1" exposure="1" environment-image="neutral">
+    <div class="ar-help" slot="ar-prompt">Следуйте подсказкам телефона, чтобы разместить объект в пространстве.</div>
+  </model-viewer>
+  <div class="ar-help">Для полноценного AR-просмотра необходимо добавить файл assets/gold-rings.glb (3D-модель колец). Пока файла нет, используйте кнопку «Посмотреть 3D-анимацию» на основной странице.</div>
+</div>
+<script>
+function setStatus(s){document.getElementById('status').textContent=s}
+function launchAR(){
+  const viewer=document.getElementById('viewer');
+  if(viewer && viewer.modelIsVisible===false){setStatus('AR-модель ещё не добавлена. Сейчас доступна декоративная 3D-анимация на основной странице.');}
+  const panel=document.getElementById('arPanel');
+  panel.classList.add('open');panel.setAttribute('aria-hidden','false');
+  if(!window.isSecureContext){setStatus('Для AR необходима HTTPS-ссылка. Открытие локального файла не поддерживает полноценный запуск AR.');}
+  if(viewer&&viewer.activateAR){
+    viewer.activateAR().then(()=>setStatus('')).catch(()=>setStatus('AR не запустился: используйте кнопку 3D-анимации или откройте страницу на совместимом телефоне.'));
+  }else{setStatus('3D-компонент ещё загружается. Попробуйте снова через несколько секунд.');}
+}
+function closeAR(){const p=document.getElementById('arPanel');p.classList.remove('open');p.setAttribute('aria-hidden','true')}
+function openFallback(){closeAR();setStatus('Золотые кольца, орбиты, цветы и светящиеся частицы анимируются на странице. Для AR-функции нужно добавить 3D-файл gold-rings.glb.')}
+</script>
+</body></html>
