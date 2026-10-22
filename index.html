@@ -84,7 +84,9 @@ button{cursor:pointer;font:11px Arial,sans-serif;letter-spacing:1.2px;text-trans
     shadow-intensity="1" exposure="1" environment-image="neutral">
     <div class="ar-help" slot="ar-prompt">Следуйте подсказкам телефона, чтобы разместить объект в пространстве.</div>
   </model-viewer>
-  <div class="ar-help">Для полноценного AR-просмотра необходимо добавить файл assets/gold-rings.glb (3D-модель колец). Пока файла нет, используйте кнопку «Посмотреть 3D-анимацию» на основной странице.</div>
+  <div class="ar-help">
+  Если кольца не отображаются, проверьте подключение к интернету
+  и загрузку 3D-модели. Для AR нужен совместимый телефон и браузер.
 </div>
 <script>
 function setStatus(s){document.getElementById('status').textContent=s}
